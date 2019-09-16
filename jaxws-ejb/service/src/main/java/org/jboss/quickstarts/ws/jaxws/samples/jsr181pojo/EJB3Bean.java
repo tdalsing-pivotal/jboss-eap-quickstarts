@@ -16,8 +16,9 @@
  */
 package org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo;
 
+import org.springframework.stereotype.Service;
+
 import javax.ejb.Remote;
-import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -25,11 +26,12 @@ import javax.jws.soap.SOAPBinding;
 /**
  * @author rsearls@redhat@com
  */
-@Stateless
 @Remote(EJB3RemoteInterface.class)
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
+@Service
 public class EJB3Bean implements EJB3RemoteInterface {
+
     @WebMethod
     public String echo(String input) {
         return "EJB3Bean returning: " + input;
